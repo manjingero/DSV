@@ -1,0 +1,820 @@
+/* General Styles */
+*, *::before, *::after {
+  box-sizing: border-box; /* Ensure all elements include padding and border in their width and height */
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: #cfcfcf;
+  height: 100vh;
+  overflow: hidden; /* Prevent body scrolling */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #444444;
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+/* Tab Bar */
+.tab-bar {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin-left: 20px;
+  min-width: 0; /* Prevents the tab-bar from overflowing */
+  max-width: calc(100% - 300px); /* Limit the tab-bar width, adjusted for buttons */
+}
+
+.tab-bar ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling */
+  flex-wrap: nowrap; /* Prevent tabs from wrapping to the next line */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #555555 #2d2d2d; /* For Firefox */
+  padding-right: 10px; /* Added spacing before upload/save buttons */
+}
+
+.tab-bar ul::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tab-bar ul::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 4px;
+}
+
+.tab-bar ul::-webkit-scrollbar-thumb {
+  background-color: #555555;
+  border-radius: 4px;
+}
+
+.tab-bar .tab {
+  background-color: #3c3c3c;
+  color: #ffffff;
+  padding: 8px 10px; /* Reduced padding for smaller height */
+  margin-right: 3px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0; /* Prevent tabs from shrinking */
+  height: 35px; /* Reduced height for smaller tabs */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.tab-bar .tab.active {
+  background-color: #1e90ff; /* Highlight active tab */
+}
+
+.tab-bar .tab .close-tab {
+  background: none;
+  border: none;
+  color: #ffffff;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.tab-bar .tab .close-tab:hover {
+  color: #ff4d4d;
+}
+
+/* Upload and Save Section */
+.upload-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+  flex-shrink: 0; /* Prevent from shrinking */
+}
+
+/* Upload and Save Buttons */
+.upload-button,
+.save-button {
+  background-color: #3a3a3a;
+  color: #cfcfcf;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.upload-button:hover,
+.save-button:hover {
+  background-color: #4a4a4a;
+  transform: translateY(-2px);
+}
+
+/* Main Layout */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  gap: 25px;
+  height: calc(100vh - 70px); /* Adjust based on header height */
+  padding: 25px;
+  background-color: #1e1e1e;
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Tab Content */
+.tab-content {
+  display: none;
+  grid-column: 1 / -1; /* Span all columns */
+  height: 100%; /* Ensure full height within main-layout */
+  overflow: hidden; /* Prevent overflow from affecting layout */
+  padding: 20px;
+  background-color: #292929;
+  border-radius: 8px;
+}
+
+.tab-content.active {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  gap: 25px;
+  height: 100%; /* Ensure full height */
+}
+
+/* Specific Styles for Main Tab */
+.tab-content#tab-1.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.drop-file-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed #444444;
+  border-radius: 8px;
+  padding: 50px;
+  text-align: center;
+  color: #cfcfcf;
+  background-color: #2d2d2d;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  width: 80%; /* Adjust width to occupy most of the center */
+  max-width: 600px; /* Set a maximum width for larger screens */
+  min-height: 300px; /* Ensure a minimum height */
+}
+
+.drop-file-area p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.drop-file-area .select-files-button {
+  background-color: #3a3a3a;
+  color: #cfcfcf;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.drop-file-area .select-files-button:hover {
+  background-color: #4a4a4a;
+  transform: translateY(-2px);
+}
+
+.drop-file-area.highlight {
+  background-color: #333333;
+  border-color: #1e90ff;
+}
+
+/* Sections */
+.left-section,
+.middle-section,
+.right-section {
+  background-color: #2d2d2d;
+  padding: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-section {
+  min-width: 200px;
+}
+
+.middle-section {
+  min-width: 250px;
+  height: 100%; /* Ensure it takes full height of its container */
+}
+
+.right-section {
+  min-width: 250px;
+  overflow-y: auto; /* Enable individual scrollbar */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #555555 #2d2d2d; /* For Firefox */
+}
+
+/* Make the STIG Details title sticky */
+.right-section h3 {
+  position: sticky;
+  top: 0;
+  background-color: #2d2d2d; /* Match the background of right-section */
+  padding: 0px 0; /* Reduced vertical padding */
+  z-index: 10; /* Ensure it stays above the scrolling content */
+}
+
+/* Adjust stig-details to account for scrollbar positioning */
+.stig-details {
+  padding-right: 15px; /* Increase padding to move scrollbar further right */
+  overflow-y: auto; /* Ensure content scrolls within this container */
+}
+
+/* Enhanced Scrollbar for Middle Section (.stig-list) */
+.stig-list {
+  list-style: none;
+  padding: 0 10px 0 0; /* Added right padding */
+  margin: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1; /* Allows the list to grow and fill available space */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #555555 #2d2d2d; /* For Firefox */
+  scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* Enhanced Scrollbar Styling for .stig-list */
+.stig-list::-webkit-scrollbar {
+  width: 12px; /* Increased scrollbar width */
+}
+
+.stig-list::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 6px;
+}
+
+.stig-list::-webkit-scrollbar-thumb {
+  background-color: #555555;
+  border-radius: 6px;
+  border: 3px solid #2d2d2d;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.stig-list::-webkit-scrollbar-thumb:hover {
+  background-color: #777777; /* Lighter color on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Custom Scrollbar for Right Section */
+.right-section::-webkit-scrollbar {
+  width: 10px; /* Adjust scrollbar width */
+}
+
+.right-section::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 5px;
+}
+
+.right-section::-webkit-scrollbar-thumb {
+  background-color: #555555;
+  border-radius: 5px;
+  border: 2px solid #2d2d2d;
+}
+
+/* Pie Chart Container */
+.pieChartContainer {
+  width: 100%;
+  height: 200px; /* Reduced height to make the pie chart smaller */
+  position: relative;
+  flex-shrink: 0; /* Prevent container from shrinking */
+  overflow: hidden; /* Hide any overflow */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1400px) {
+  .main-layout {
+    grid-template-columns: 1fr 1.5fr 1.5fr;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .left-section {
+    min-width: 150px;
+  }
+
+  .middle-section,
+  .right-section {
+    min-width: 200px;
+  }
+
+  .pieChartContainer {
+    height: 150px; /* Further reduced height for medium screens */
+  }
+
+  .stig-list {
+    flex: 1; /* Allows the list to grow and fill available space */
+  }
+}
+
+@media (max-width: 1000px) {
+  .main-layout {
+    grid-template-columns: 1fr; /* Stack sections vertically on smaller screens */
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .left-section,
+  .middle-section,
+  .right-section {
+    min-width: 100%;
+  }
+
+  .pieChartContainer {
+    height: 130px; /* Further reduced height for smaller screens */
+  }
+
+  .stig-list {
+    flex: 1; /* Allows the list to grow and fill available space */
+  }
+
+  .filter-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px; /* Add margin below the buttons */
+  }
+
+  .filter-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .tab-bar {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .tab-bar ul {
+    justify-content: flex-start;
+  }
+
+  .upload-section {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .main-layout {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .left-section,
+  .middle-section,
+  .right-section {
+    padding: 15px;
+  }
+
+  .stig-details p {
+    margin: 10px 0;
+  }
+
+  .pieChartContainer {
+    height: 110px; /* Further reduced height for mobile */
+  }
+
+  .stig-list {
+    flex: 1; /* Allows the list to grow and fill available space */
+  }
+}
+
+/* Additional Styles */
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0; /* Important for flex items to allow proper shrinking */
+}
+
+.filters h4 {
+  margin-bottom: 20px;
+}
+
+.filters-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: 0; /* Allow it to shrink */
+  padding-right: 10px; /* Prevent content from being hidden behind the scrollbar */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #555555 #2d2d2d; /* For Firefox */
+}
+
+/* Custom Scrollbar Styling for filters-content */
+.filters-content::-webkit-scrollbar {
+  width: 12px; /* Adjust scrollbar width */
+}
+
+.filters-content::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 6px;
+}
+
+.filters-content::-webkit-scrollbar-thumb {
+  background-color: #555555;
+  border-radius: 6px;
+  border: 3px solid #2d2d2d;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filters-content::-webkit-scrollbar-thumb:hover {
+  background-color: #777777; /* Lighter color on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filters input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+/* CAT Filter Buttons */
+.cat-filter-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.cat-filter-button {
+  padding: 6px 12px; /* Reduced padding for smaller buttons */
+  background-color: #444444;
+  color: #cfcfcf;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px; /* Smaller font size */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cat-filter-button:hover {
+  background-color: #555555;
+  transform: translateY(-2px);
+}
+
+.cat-filter-button.active {
+  background-color: #666666;
+  color: #ffffff;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px; /* Add margin below the buttons */
+}
+
+.filter-button {
+  padding: 8px 16px; /* Slightly reduced padding */
+  background-color: #444444;
+  color: #cfcfcf;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filter-button:hover {
+  background-color: #555555;
+  transform: translateY(-2px);
+}
+
+.filter-button.active {
+  background-color: #666666;
+  color: #ffffff;
+}
+
+/* STIG List */
+.stig-list {
+  list-style: none;
+  padding: 0 10px 0 0; /* Added right padding */
+  margin: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1; /* Allows the list to grow and fill available space */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #555555 #2d2d2d; /* For Firefox */
+  scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* STIG List Items */
+.stig-item {
+  padding: 12px 18px;
+  background-color: #3c3c3c;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.stig-item:hover {
+  background-color: #444444;
+  transform: translateY(-2px);
+}
+
+/* Active STIG Indicator */
+.stig-item.active-stig {
+  background-color: #1e90ff;
+  color: #ffffff;
+}
+
+.stig-item.active-stig:hover {
+  background-color: #1c86ee;
+}
+
+/* STIG Details */
+.stig-details p {
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+.stig-details textarea {
+  width: 100%;
+  min-height: 100px;
+  background-color: #3c3c3c;
+  color: #cfcfcf;
+  border: 1px solid #555555;
+  border-radius: 6px;
+  padding: 12px;
+  resize: vertical;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.stig-details textarea:focus {
+  outline: none;
+  border-color: #1e90ff;
+  background-color: #4a4a4a;
+}
+
+/* Improved Spacing Between Finding Details and Comments */
+.stig-details .detailFindingDetails {
+  margin-bottom: 25px; /* Increased spacing */
+}
+
+.stig-details .detailComments {
+  margin-top: 0; /* Reset if necessary */
+}
+
+/* Context Menu */
+.context-menu {
+  position: absolute;
+  background-color: #3c3c3c;
+  border: 1px solid #555555;
+  border-radius: 6px;
+  z-index: 1000;
+  width: 160px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.context-menu-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  color: #cfcfcf;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.context-menu-item:hover {
+  background-color: #555555;
+}
+
+/* Command Box */
+.command-box {
+  display: flex;
+  align-items: center;
+  background-color: #333333;
+  padding: 12px 18px;
+  margin: 15px 0;
+  border-radius: 6px;
+  border: 1px solid #444444;
+  font-family: monospace;
+  font-size: 14px;
+  color: #cfcfcf;
+  gap: 10px;
+}
+
+.command-box span {
+  flex-grow: 1;
+  font-weight: bold;
+  word-break: break-all;
+}
+
+.copy-button {
+  background-color: #555555;
+  color: #cfcfcf;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.copy-button:hover {
+  background-color: #666666;
+  transform: translateY(-2px);
+}
+
+.copy-active {
+  background-color: #1e90ff !important;
+  color: #ffffff !important;
+}
+
+/* Severity and Status Classes */
+
+/* Open Status */
+.status-Open-CAT_I {
+  border-left: 5px solid #8B0000; /* Dark Red */
+}
+
+.status-Open-CAT_II {
+  border-left: 5px solid #FF0000; /* Red */
+}
+
+.status-Open-CAT_III {
+  border-left: 5px solid #FF6347; /* Tomato */
+}
+
+/* Not a Finding Status */
+.status-NotAFinding-CAT_I {
+  border-left: 5px solid #006400; /* Dark Green */
+}
+
+.status-NotAFinding-CAT_II {
+  border-left: 5px solid #228B22; /* Forest Green */
+}
+
+.status-NotAFinding-CAT_III {
+  border-left: 5px solid #32CD32; /* Lime Green */
+}
+
+/* Not Reviewed Status */
+.status-Not_Reviewed {
+  border-left: 5px solid #FFFFFF; /* White */
+}
+
+/* Not Applicable Status */
+.status-Not_Applicable {
+  border-left: 5px solid #6B6B6B; /* Light Grey */
+}
+
+/* Active Tab Indicator */
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #1e90ff;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* Tooltip for Close Button */
+.close-tab {
+  position: relative;
+}
+
+.tab:hover .close-tab::after {
+  opacity: 1;
+}
+
+/* Advanced Search */
+.advanced-search {
+  margin-top: 20px;
+}
+
+.advanced-search h4 {
+  margin-bottom: 10px;
+}
+
+.advanced-search-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #555555;
+  border-radius: 6px;
+  background-color: #3c3c3c;
+  color: #cfcfcf;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.advanced-search-input::placeholder {
+  color: #a9a9a9;
+}
+
+.advanced-search-input:focus {
+  outline: none;
+  border-color: #1e90ff;
+}
+
+.matching-logic {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.matching-logic label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.matching-logic input[type="radio"] {
+  margin-right: 5px;
+}
+
+.reset-search-button {
+  padding: 8px 16px;
+  background-color: #444444;
+  color: #cfcfcf;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reset-search-button:hover {
+  background-color: #555555;
+  transform: translateY(-2px);
+}
+
+/* Prevent pie chart from resizing */
+.pieChartContainer canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

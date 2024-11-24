@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSV</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DSV</h1>
+            <!-- Tab Bar -->
+            <div class="tab-bar">
+                <ul id="tabs">
+                    <li class="tab active" data-tab="tab-1">
+                        Main
+                        <!-- Close button is omitted for the main tab -->
+                    </li>
+                </ul>
+            </div>
+            <!-- End of Tab Bar -->
+
+            <!-- Upload and Save Buttons -->
+            <div class="upload-section">
+                <button id="uploadButton" class="upload-button">Upload</button>
+                <button id="saveButton" class="save-button">Save</button>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            <!-- Main Tab Content with Drop File Box -->
+            <div id="tab-1" class="tab-content active">
+                <div class="drop-file-area" id="dropFileArea">
+                    <p>Drag and drop your CKL files here.</p>
+                    <button id="selectFilesButton" class="select-files-button">Select Files</button>
+                </div>
+            </div>
+            <!-- Additional tabs will have similar structures -->
+            <!-- They will be dynamically created via JavaScript -->
+        </main>
+    </div>
+    <script src="chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
