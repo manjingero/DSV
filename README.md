@@ -19,7 +19,7 @@
  2. Navigate to the Project Directory:
    cd DSV
  3. Open the Application:
-   - Open the 'index.html' file in your preferred web browser.
+   - Open the 'DSV.html' file in your preferred web browser.
    - Note: For full functionality, use a modern browser that supports the File System Access API (e.g., Google Chrome or Microsoft Edge).
 
 *Usage:*
