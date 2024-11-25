@@ -31,7 +31,7 @@ class Tab {
 
     // New properties for advanced search
     this.searchKeywords = [];
-    this.matchingLogic = 'any'; // 'any' or 'all'
+    this.matchingLogic = 'all'; // Changed from 'any' to 'all'
 
     this.initializeTab();
   }
@@ -719,8 +719,8 @@ function addNewTab(fileContent = null, fileHandle = null, fileName = null) {
         <h4>Advanced Search</h4>
         <input type="text" class="advanced-search-input" placeholder="Keywords separated by commas:">
         <div class="matching-logic">
-          <label><input type="radio" name="matchingLogic-${newTabId}" value="any" checked> Any</label>
-          <label><input type="radio" name="matchingLogic-${newTabId}" value="all"> All</label>
+          <label><input type="radio" name="matchingLogic-${newTabId}" value="all" checked> All</label>
+          <label><input type="radio" name="matchingLogic-${newTabId}" value="any"> Any</label>
         </div>
         <button class="reset-search-button">Reset Search</button>
       </div>

@@ -1,3 +1,5 @@
+/* styles.css */
+
 /* General Styles */
 *, *::before, *::after {
   box-sizing: border-box; /* Ensure all elements include padding and border in their width and height */
@@ -185,29 +187,29 @@ header h1 {
   justify-content: center;
   border: 3px dashed #444444;
   border-radius: 8px;
-  padding: 50px;
+  padding: 80px; /* Increased padding */
   text-align: center;
   color: #cfcfcf;
   background-color: #2d2d2d;
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-  width: 80%; /* Adjust width to occupy most of the center */
-  max-width: 600px; /* Set a maximum width for larger screens */
-  min-height: 300px; /* Ensure a minimum height */
+  width: 90%; /* Increased width */
+  max-width: 800px; /* Increased max-width */
+  min-height: 400px; /* Increased min-height */
 }
 
 .drop-file-area p {
-  font-size: 24px;
-  margin-bottom: 30px;
+  font-size: 28px; /* Increased font size */
+  margin-bottom: 40px; /* Increased margin */
 }
 
 .drop-file-area .select-files-button {
   background-color: #3a3a3a;
   color: #cfcfcf;
-  padding: 15px 30px;
+  padding: 20px 40px; /* Increased padding */
   border: none;
   border-radius: 6px;
-  font-size: 18px;
+  font-size: 20px; /* Increased font size */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
